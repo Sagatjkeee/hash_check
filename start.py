@@ -11,7 +11,7 @@ def find_files():
     for i in data:
         get_hash(i)
 
-
+        
 def get_hash(filename):
     """ Ф-я рассчитывает хэш файла """
     nb = random.random()
@@ -24,6 +24,7 @@ def get_hash(filename):
     else:
         m = hashlib.sha256()
         method = 'sha256'
+        
     with open(filename, 'rb') as f:
         while True:
             data = f.read(256)
@@ -31,6 +32,7 @@ def get_hash(filename):
                 break
             m.update(data)
         hesh = m.hexdigest()
+        
     with open('D:\PITON\Heshuryem\data\data.txt', 'a') as f:
         print('{} {} {}'.format(filename.ljust(14, ' '), method.ljust(7, ' '), hesh), file=f)
 
