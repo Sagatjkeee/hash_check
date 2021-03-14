@@ -8,6 +8,7 @@ def get_hash_for_chk(filename, a, x):
     1. смотрим каким методом был захэширан файл
     2. таким же методом повторяем процедуру
     """
+    
     with open(filename, 'rb') as f:
         method = a[x][1]
         if method == 'md5':
@@ -33,8 +34,10 @@ def check():
 
     spisok = glob.glob("*.*")
     data = 'D:\PITON\Heshuryem\data\data.txt'
+    
     with open(data, 'r') as f:
         a = [[_ for _ in line.split()] for line in f.readlines()]
+        
     for sp in spisok:
         x = 0
         try:
@@ -44,6 +47,7 @@ def check():
                     print(sp.ljust(14, ' '), 'NOT FOUND')
         except IndexError:
             pass
+        
         if not x == len(a):
             hesh = get_hash_for_chk(sp, a, x)
 
